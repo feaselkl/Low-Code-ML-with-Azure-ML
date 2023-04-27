@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Catallaxy Services | Low-Code ML with Azure Machine Learning</title>
+
+		<link rel="stylesheet" href="../reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="../WebsiteAssets/mods.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h2>Low-Code ML with Azure Machine Learning</h2>
+					
+					<a href="https://www.catallaxyservices.com">Kevin Feasel</a> (<a href="https://twitter.com/feaselkl">@feaselkl</a>)<br />
+					<a href="https://csmore.info/on/lowcodeaml">https://csmore.info/on/lowcodeaml</a>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Who Am I?  What Am I Doing Here?</h3>
+					<div class="container">
+						<div class="col">
+							<table class="whoami">
+								<tr>
+									<td><a href="https://csmore.info"><img src="../WebsiteAssets/Logo.png" height="100" /></a></td>
+									<td nowrap><a href="https://csmore.info">Catallaxy Services</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://curatedsql.com"><img src="../WebsiteAssets/CuratedSQLLogo.png" height="100" /></a></td>
+									<td nowrap><a href="https://curatedsql.com">Curated SQL</a></td>
+								</tr>
+								<tr>
+									<td><a href="https://csmore.info/on/training"><img src="../WebsiteAssets/Teachable.png" height="120" /></a></td>
+									<td nowrap><a href="https://csmore.info/on/training">Training on Teachable</a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col">
+							<a href="http://www.twitter.com/feaselkl"><img src="../WebsiteAssets/HeadShot.jpg" height="358" width="315" /></a>
+							<br />
+							<a href="http://www.twitter.com/feaselkl">@feaselkl</a>
+						</div>					
+					</div>
+				</section>
+				
+				<section data-background-image="presentation/assets/background/motivation.jpg" data-background-opacity="0.2">
+					<h3>Motivation</h3>
+					
+					<p>My goals in this talk:</p>
+					
+					<ul>
+						<li>Provide an overview of Azure Machine Learning.</li>
+						<li>Introduce Automated Machine Learning (AutoML).</li>
+						<li>Train an ML model through the designer.</li>
+						<li>Deploy an ML model and score data, individually and in bulk.</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What We'll Do</h3>
+					
+					<img src="presentation/assets/image/Demo1.png" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What We'll Do</h3>
+					
+					<img src="presentation/assets/image/Demo2.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What We'll Do</h3>
+					
+					<img src="presentation/assets/image/Demo3.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What We'll Do</h3>
+					
+					<img src="presentation/assets/image/Demo4.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What We'll Do</h3>
+					
+					<img src="presentation/assets/image/Demo5.png" height="550" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li class="active">A Brief Primer on Azure ML</li>
+						<li>Automated Machine Learning (AutoML)</li>
+						<li>Training a Model</li>
+						<li>Deploying a Model</li>
+					</ol>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What is Azure Machine Learning?</h3>
+					
+					<p>Azure Machine Learning is Microsoft's primary offering for machine learning in the cloud.</p>
+					
+					<img src="presentation/assets/image/AzureMLOverview.png" height="450" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Starting Out:  Workspaces</h3>
+					
+					<p>A <strong>workspace</strong> is necessary to get started with Azure ML.</p>
+					
+					<img src="presentation/assets/image/portalmachinelearning.png" height="450" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Workspace Basics</h3>
+					
+					<img src="presentation/assets/image/machinelearningrequirements.png" height="600" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Advanced Workspace Settings</h3>
+					
+					<img src="presentation/assets/image/machinelearningadvanced.png" height="600" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/lego.jpg" data-background-opacity="0.2">
+					<h3>Key Components</h3>
+					
+					<p>There are several major components which make up Azure ML.</p>
+					
+					<ul>
+						<li>Datastores</li>
+						<li>Datasets</li>
+						<li>Compute instances</li>
+						<li>Compute clusters</li>
+						<li>Azure ML Studio Designer</li>
+						<li>Experiments and Runs</li>
+						<li>Models</li>
+						<li>Endpoints</li>
+						<li>Inference clusters</li>
+					</ul>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Datastores</h3>
+					
+					<p>Datastores are connections to where the data lives, such as Azure SQL Database or Azure Data Lake Storage Gen2.</p>
+					
+					<img src="presentation/assets/image/AzureMLDatastores.png" height="450" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Datasets</h3>
+					
+					<p>Datasets contain the data we use to train models.</p>
+					
+					<img src="presentation/assets/image/AzureMLDatasets.png" height="450" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Compute instances</h3>
+					
+					<p>Compute instances are hosted virtual machines which contain a number of data science and machine learning libraries pre-installed.  You can use these for easy remote development.</p>
+					
+					<img src="presentation/assets/image/AzureMLComputeInstances.png" height="400" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Compute clusters</h3>
+					
+					<p>Sometimes, you want something a bit more powerful to perform training.  This is where compute clusters can help:  spin them up for training and let them disappear automatically afterward to save money.</p>
+					
+					<img src="presentation/assets/image/AzureMLComputeCluster.png" height="400" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Designer</h3>
+					
+					<p>The Azure ML Studio Designer allows you to create training and scoring pipelines using a drag-and-drop interface reminiscent of SQL Server Integration Services.</p>
+					
+					<img src="presentation/assets/image/AzureMLDesigner.png" height="400" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Experiments and Runs</h3>
+					
+					<p>Experiments allow you to try things out in a controlled manner.  Each Run of an experiment is tracked separately in the experiment, letting you see how well your changes work over time.</p>
+					
+					<img src="presentation/assets/image/AzureMLExperiments.png" height="400" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Models</h3>
+					
+					<p>The primary purpose of an experiment is to train a model.</p>
+					
+					<img src="presentation/assets/image/AzureMLModels.png" height="450" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Endpoints</h3>
+					
+					<p>Once you have a trained model, you can expose it as an API endpoint for scoring new data.</p>
+					
+					<img src="presentation/assets/image/AzureMLEndpoints.png" height="450" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Inference clusters</h3>
+					
+					<p>Inference clusters are an easy method to host endpoints for real-time or batch scoring.</p>
+					
+					<img src="presentation/assets/image/AzureMLInferenceCluster.png" height="450" />
+				</section>
+				
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>A Brief Primer on Azure ML</li>
+						<li class="active">Automated Machine Learning (AutoML)</li>
+						<li>Training a Model</li>
+						<li>Deploying a Model</li>
+					</ol>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>What is AutoML?</h3>
+					
+					<p>Automated Machine Learning (AutoML) is a process intended to simplify the machine learning process.  It provides two benefits:</p>
+
+					<ol>
+						<li>It reduces the level of skill needed to run a machine learning project.</li>
+						<li>It provides us a minimum baseline of model quality--skilled practitioners can beat AutoML but it provides a nice "first approach" score.</li>
+					</ol>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Performing AutoML</h3>
+
+					<img src="presentation/assets/image/AutoML_NewAutoMLRun.png" height="500" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Select a Dataset</h3>
+
+					<img src="presentation/assets/image/AutoML_SelectChicagoDataset.png" height="550" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Configure Model Parameters</h3>
+
+					<img src="presentation/assets/image/AutoML_ConfigureRun.png" height="550" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Configure Features</h3>
+
+					<img src="presentation/assets/image/AutoML_SelectTask.png" height="500" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Configure Features</h3>
+
+					<img src="presentation/assets/image/AutoML_AdditionalConfiguration.png" height="500" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Configure Features</h3>
+
+					<img src="presentation/assets/image/AutoML_Featurization.png" height="500" />
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Configure Features</h3>
+
+					<img src="presentation/assets/image/AutoML_Validation.png" height="500" />
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Review Results</h3>
+
+					<img src="presentation/assets/image/AutoML_Results.png" height="550" />
+				</section>
+
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>A Brief Primer on Azure ML</li>
+						<li>Automated Machine Learning (AutoML)</li>
+						<li class="active">Training a Model</li>
+						<li>Deploying a Model</li>
+					</ol>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Using the Designer</h3>
+
+					<p>The Azure Machine Learning process:</p>
+					<ul>
+						<li>Get some data</li>
+						<li>Clean up that data</li>
+						<li>Choose an algorithm</li>
+						<li>Train the model</li>
+						<li>Evaluate the model</li>
+					</ul>
+				</section>
+
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Agenda</h3>
+					
+					<ol>
+						<li>A Brief Primer on Azure ML</li>
+						<li>Automated Machine Learning (AutoML)</li>
+						<li>Training a Model</li>
+						<li class="active">Deploying a Model</li>
+					</ol>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Deploying a Model</h3>
+
+					<p>Once we have trained a model, our next goal is to make it available.</p>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Build a Pipeline</h3>
+
+					<p>The first step is to build an <strong>inference pipeline</strong>.  This is different from a training pipeline:  we don't use the training dataset; instead, we accept user input and return a scored response.</p>
+				</section>
+
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Two Approaches</h3>
+
+					<p>There are two approaches to inference pipelines:</p>
+
+					<ol>
+						<li>Real-time inference -- best for generating a few predictions</li>
+						<li>Batch inference -- best for scoring large numbers of records</li>
+					</ol>
+
+					<p>Let's look at real-time inference today.</p>
+				</section>
+
+				<section data-background-image="presentation/assets/background/demo.jpg" data-background-opacity="0.2">
+					<h3>Demo Time</h3>
+				</section>
+
+				<section data-background-image="presentation/assets/background/wrappingup.jpg" data-background-opacity="0.2">
+					<h3>Wrapping Up</h3>
+
+					<p>Over the course of this talk, we have gained an understanding of the basics of low-code machine learning with Azure ML.  This includes using the UI-heavy pipeline designers as well as taking advantage of AutoML.</p>
+				</section>
+				
+				<section data-background-image="presentation/assets/image/Bubbles.jpg" data-background-opacity="0.4">
+					<h3>Wrapping Up</h3>
+					
+					<p>
+						To learn more, go here:
+						<br />
+						<a href="https://csmore.info/on/lowcodeaml">https://csmore.info/on/lowcodeaml</a>
+					</p>
+					<p>
+						The next talk in the series:
+						<br />
+						<a href="https://csmore.info/on/amlindepth">https://csmore.info/on/amlindepth</a>
+					</p>
+					<p>
+						And for help, contact me:
+						<br />
+						<a href="mailto:feasel@catallaxyservices.com">feasel@catallaxyservices.com</a> | <a href="https://www.twitter.com/feaselkl">@feaselkl</a>
+					</p>
+					<br />
+					<p>
+						Catallaxy Services consulting:
+						<br />
+						<a href="https://csmore.info/contact">https://CSmore.info/on/contact</a>
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/dist/reveal.js"></script>
+		<script src="../reveal.js/plugin/zoom/zoom.js"></script>
+		<script src="../reveal.js/plugin/notes/notes.js"></script>
+		<script src="../reveal.js/plugin/search/search.js"></script>
+		<script src="../reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../reveal.js/plugin/math/math.js"></script>
+		<script src="../reveal.js/plugin/menu/menu.js"></script>
+		<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../reveal.js/plugin/chart/Chart.min.js"></script>
+		<script src="../reveal.js/plugin/chart/plugin.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				width: '70%',
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				transition: 'fade',
+				
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath, RevealMenu, RevealChart ]
+			});
+		</script>
+	</body>
+</html>

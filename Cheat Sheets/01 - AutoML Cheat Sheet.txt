@@ -1,0 +1,53 @@
+AutoML Cheat Sheet
+------------------
+1. Review the dataset called ChicagoParkingTickets
+	a. Dataset created from data at https://cspolybasepublic.blob.core.windows.net/cstrainingpublicdata/ChicagoParkingTickets.txt
+	b. That CSV is publicly available
+2. Navigate to Automated ML
+3. Select "+ New Automated ML job"
+4. Choose the ChicagoParkingTickets dataset
+5. Configure the job
+	a. If the ChicagoParkingFees experiment does not exist, create it.
+	b. Target column:  PaymentIsOutstanding
+	c. Compute type:  compute cluster
+	d. Compute cluster:  autocompute-ad
+		i. If this compute cluster does not exist, create one which is at least 2 nodes of Standard_DS12_V2
+6. Select task and settings
+	a. Choose Classification but do NOT select Deep Learning.
+	b. Choose "View additional configuration settings"
+		i. Review the primary metric options
+			- Area Under the Curve (AUC) - focus on the best mix of maximizing true positives and minimizing false positives
+			- Accuracy - works best when the classes are fairly balanced
+			- Average Precision Score - This summarizes the precision-recall curve
+			- Normalized Macro Recall - This only looks at recall
+			- Precision Score - This only looks at precision
+				Precision = Positive Predictive Value = When we predicted True, how likely was it actually to be True?
+				Recall = Given that an event happened, how likely was it that we predicted it to happen?
+		ii. Model blocking - We can ignore certain models, especially if they'll be expensive or we know they won't work well.
+		iii. Positive class label - In our case, did the person NOT pay?  We set the label to 1.
+		iv. Exit criteria - Be sure to set this value and the metric score threshold!
+	c. Choose "View featurization settings" but leave everything as-is
+7. Select validation settings
+	a. Validation type = k-fold cross validation
+		i. Auto -- Let AML choose which validatation metric
+		ii. k-fold cross validation -- Divide data into k subsets, with k-1 used for training and 1 used for validation
+		iii. Monte Carlo cross validation -- Randomly select (without replacement) x% of the data for validation, performing validation n times
+		iv. Train-validation split -- Hold back x% of random data from the training set for validation, performing validation once
+		v. User vlaidation data -- Provide a separate dataset for the express purpose of validation
+	b. Test data asset = Test split of 20%
+		i. No test data asset required -- Don't perform testing at all
+		ii. Provide a test data asset -- Provide a separate dataset for the express purpose of testing
+		iii. Test split -- Hold back x% of random data from the dataset for testing.  This is different from validation!
+8. FOR MY DEMO PURPOSES, DO NOT RUN THE JOB!
+	a. If you are reading this and want to follow along, you can definitely run the job.  If you have 2 compute nodes of Standard_DS12_V2, I'd recommend running the job for about 6 hours, which will cost you somewhere on the order of $5 to run this.
+9. Review a prior Automated ML job
+	a. Choose the ChicagoParkingFees experiment, job sleepy_fox_h90t8s92
+	b. Review the Overview section
+		TODO:  what we need to review in the overview!
+	c. Review the Data guardrails -- Note that there is a small amount of missing data but overall a good dataset
+	d. Review the Models section -- Ran for 24 hours, model quality typically topped out at ~75%.  Select the top model.
+		i. Accuracy fairly close to AUC due to a fairly balanced pair of classes:  ~575k paid, ~220k not paid
+		ii. The big flaw:  poor job understanding when a ticket is unlikely to be paid
+	e. Review child jobs
+		i. lemon_forest_yh67qqs9 and nifty_morning_7qx59v52 -- Featurization jobs, not model training
+		ii. olive_rainbow_jwfnfq9 -- LightGBM model, 0.75568 AUC weighted.

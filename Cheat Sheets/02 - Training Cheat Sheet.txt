@@ -1,0 +1,33 @@
+Azure ML Designer Training Cheat Sheet
+--------------------------------------
+1. Navigate to the Compute tab and ensure that CSCompute is started
+	a. If you are reading this and want to follow along, be sure you have a compute instance which is at least of size Standard_DS12_V2.
+2. Navigate to the Designer tab.  Select "Create a new pipeline using classic prebuilt components"
+3. Choose Settings.  Set the compute type to "Compute instance" and choose CSCompute.  Provide a proper name to the 
+4. Choose ChicagoParkingTickets from the Data tab and drag it onto the canvas.
+5. Add a Clean Missing Data component.
+	a. Double-click the component and columns with missing data:  Tract, Police_District.
+	b. Change cleaning mode:  Replace with mean
+6. Add a Split Data component.
+	a. Fraction of rows in first output dataset = 0.7
+	b. Random seed = 19008
+7. Review the machine learning algorithms, noting the split by problem type.
+8. Add a Two-Class Decision Forest component.
+	a. Number of decision trees = 32
+	b. Maximum depth = 32
+	c. Minimum number of samples per leaf node = 8
+	d. Resampling method = Bagging Resampling
+		- Bagging = Bootstrap aggregation, training up each tree with different random selections of data and features.
+9. Add a Train Model component and wire it up.
+	a. Label column = PaymentIsOutstanding
+	b. Model explanations = True
+10. Add a Score Model component and wire it up
+11. Choose Validate from the menu.  Then, choose Submit.
+12. Select an existing experiment:  ChicagoParkingTicketsDesigner
+	a. If you are reading this and want to follow along, you will want to create a new experiment with this name.
+13. Wait until the job starts running and then select "Job detail"
+14. Job should take approximately 5 minutes to finish
+	a. If there is not enough time, open the Chicago Parking Tickets Fixed Model job.
+15. Review results on Score Model -- Right-click, Preview -> Scored dataset
+	a. Scroll right to PaymentIsOutstanding versus Scored Labels.  Note the skew.
+	b. No easy way to get the confusion matrix or other high-level measures from the Score Model component.

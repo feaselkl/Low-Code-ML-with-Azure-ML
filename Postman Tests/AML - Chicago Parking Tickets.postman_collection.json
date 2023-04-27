@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "809570b9-bec5-4f5d-ae0c-c575ad9c4e88",
+		"name": "AML - Chicago Parking Tickets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8748848"
+	},
+	"item": [
+		{
+			"name": "Predict Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "<FILL ME IN>",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Inputs\": {\r\n    \"input1\": [\r\n      {\r\n        \"Issued_date\": \"2000-01-29T09:10:00Z\",\r\n        \"Community_Name\": \"Austin\",\r\n        \"Sector\": \"Other W Side\",\r\n        \"Side\": \"West Side\",\r\n        \"Hardship_Index\": 73.0,\r\n        \"Per_capita_income\": 73.0,\r\n        \"Percent_unemployed\": 22.6,\r\n        \"Percent_without_diploma\": 24.4,\r\n        \"Percent_households_below_poverty\": 28.6,\r\n        \"Neighborhood\": \"A3\",\r\n        \"Ward\": 29,\r\n        \"Tract\": 252101,\r\n        \"ZIP\": 60644,\r\n        \"Police_District\": 15,\r\n        \"Plate_Type\": \"PAS\",\r\n        \"License_Plate_State\": \"IL\",\r\n        \"Unit_ID\": 15,\r\n        \"Violation_ID\": 123,\r\n        \"PaymentIsOutstanding\": 1\r\n      },\r\n      {\r\n        \"Issued_date\": \"2014-08-21T09:31:00Z\",\r\n        \"Community_Name\": \"Chatham\",\r\n        \"Sector\": \"Other S/SE/SW Side\",\r\n        \"Side\": \"Far Southeast Side\",\r\n        \"Hardship_Index\": 73.0,\r\n        \"Per_capita_income\": 73.0,\r\n        \"Percent_unemployed\": 73.0,\r\n        \"Percent_without_diploma\": 14.5,\r\n        \"Percent_households_below_poverty\": 27.8,\r\n        \"Neighborhood\": \"C1\",\r\n        \"Ward\": 8,\r\n        \"Tract\": 440102,\r\n        \"ZIP\": 60619,\r\n        \"Police_District\": 6,\r\n        \"Plate_Type\": \"PAS\",\r\n        \"License_Plate_State\": \"IL\",\r\n        \"Unit_ID\": 498,\r\n        \"Violation_ID\": 6,\r\n        \"PaymentIsOutstanding\": 0\r\n      },\r\n      {\r\n        \"Issued_date\": \"2015-04-10T19:41:00Z\",\r\n        \"Community_Name\": \"West Town\",\r\n        \"Sector\": \"West Town\",\r\n        \"Side\": \"West Side\",\r\n        \"Hardship_Index\": 73.0,\r\n        \"Per_capita_income\": 73.0,\r\n        \"Percent_unemployed\": 6.6,\r\n        \"Percent_without_diploma\": 12.9,\r\n        \"Percent_households_below_poverty\": 14.7,\r\n        \"Neighborhood\": \"WP3\",\r\n        \"Ward\": 1,\r\n        \"Tract\": 241400,\r\n        \"ZIP\": 60622,\r\n        \"Police_District\": 14,\r\n        \"Plate_Type\": \"PAS\",\r\n        \"License_Plate_State\": \"IL\",\r\n        \"Unit_ID\": 502,\r\n        \"Violation_ID\": 44,\r\n        \"PaymentIsOutstanding\": 0\r\n      },\r\n      {\r\n        \"Issued_date\": \"2014-10-10T00:32:00Z\",\r\n        \"Community_Name\": \"Hermosa\",\r\n        \"Sector\": \"Other N/NW Side\",\r\n        \"Side\": \"Northwest Side\",\r\n        \"Hardship_Index\": 73.0,\r\n        \"Per_capita_income\": 73.0,\r\n        \"Percent_unemployed\": 13.1,\r\n        \"Percent_without_diploma\": 41.6,\r\n        \"Percent_households_below_poverty\": 20.5,\r\n        \"Neighborhood\": \"H2\",\r\n        \"Ward\": 31,\r\n        \"Tract\": 200100,\r\n        \"ZIP\": 60641,\r\n        \"Police_District\": 25,\r\n        \"Plate_Type\": \"PAS\",\r\n        \"License_Plate_State\": \"IL\",\r\n        \"Unit_ID\": 502,\r\n        \"Violation_ID\": 163,\r\n        \"PaymentIsOutstanding\": 0\r\n      },\r\n      {\r\n        \"Issued_date\": \"2015-12-19T15:46:00Z\",\r\n        \"Community_Name\": \"Washington Heights\",\r\n        \"Sector\": \"Other S/SE/SW Side\",\r\n        \"Side\": \"Far Southwest Side\",\r\n        \"Hardship_Index\": 73.0,\r\n        \"Per_capita_income\": 73.0,\r\n        \"Percent_unemployed\": 20.8,\r\n        \"Percent_without_diploma\": 13.7,\r\n        \"Percent_households_below_poverty\": 16.9,\r\n        \"Neighborhood\": \"WH\",\r\n        \"Ward\": 21,\r\n        \"Tract\": 730201,\r\n        \"ZIP\": 60620,\r\n        \"Police_District\": 22,\r\n        \"Plate_Type\": \"PAS\",\r\n        \"License_Plate_State\": \"IL\",\r\n        \"Unit_ID\": 22,\r\n        \"Violation_ID\": 169,\r\n        \"PaymentIsOutstanding\": 0\r\n      }\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0a408fa4-b16c-4f6a-bd7b-8cb623514ec5.eastus.azurecontainer.io/score",
+					"protocol": "http",
+					"host": [
+						"0a408fa4-b16c-4f6a-bd7b-8cb623514ec5",
+						"eastus",
+						"azurecontainer",
+						"io"
+					],
+					"path": [
+						"score"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
