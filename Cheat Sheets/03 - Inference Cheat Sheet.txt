@@ -4,23 +4,27 @@ NOTE:  this should happen immediately after the training cheat sheet finishes!
 Expectations:  CSCompute compute instance is started, Chicago Parking Tickets model has finished running.
 
 1. Select "Create inference pipeline" from the menu, then choose "Real-time inference pipeline"
-2. Add Web Service Input as a data component and wire it in to Apply Transformation
-3. Submit the inference job
+2. Remove ChicagoParkingTickets dataset from inference pipeline.
+3. Create a new dataset with just the columns we want.
+	a. Open Test Data\ChicagoParkingTickets.txt and show that PaymentIsOutstanding is missing.
+	b. Create a new Enter Data Manually component and paste the Test Data\ChicagoParkingTickets.txt data in there.
+	c. Add an Edit Metadata component and modify Issued_date to be a DateTime datatype in format %Y-%m-%d %H:%M:%S
+	c. Wire the Edit Metadata component up, feeding it into the Apply Transformation's Dataset input.
+4. Add Web Service Input as a data component and wire it in to Apply Transformation
+5. Submit the inference job
 	a. Choose the ChicagoParkingTicketsDesigner experiment
 	b. Pick a name for the real-time inference
-4. Wait until the job starts running and then select "Job detail"
-5. Job should take approximately 2 minutes to finish
+6. Wait until the job starts running and then select "Job detail"
+7. Job should take approximately 2 minutes to finish
 	a. If there is not enough time, open the Chicago Parking Tickets Fixed Model-real time inference job
-6. Select Deploy to deploy the job.
+8. Select Deploy to deploy the job.
 	a. Choose a new real-time endpoint
 	b. Name the endpoint chicago-parking-tickets-rti
 	c. Choose Azure Container Instance as the compute type, CPU reserve of 0.5, memory reserve of 1.0
-7. Navigate to the Endpoints menu and select chicago-parking-tickets
+9. Navigate to the Endpoints menu and select chicago-parking-tickets
 	a. Deployment on should take approximately 20 minutes to finish, so open the chicago-parking-tickets endpoint instead
-8. Open Postman.  If the AML - Chicago Parking Tickets collection is not there, import it from /Postman Tests/
+10. Open Postman.  If the AML - Chicago Parking Tickets collection is not there, import it from /Postman Tests/
 	a. Note that the bearer token does need to be set and it is NOT in source control!
 	b. Use the bearer token from your endpoint
 	c. Use the REST endpoint URL from your endpoint
-9. Run the Predict Payment test, noting the inputs
-	a. Note that we need to include the PaymentIsOutstanding input, though it's not used
-	b. To fix this, we could modify the inference pipeline to remove it
+11. Run the Predict Payment test, noting the inputs
