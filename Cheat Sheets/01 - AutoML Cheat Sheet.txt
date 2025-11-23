@@ -29,11 +29,11 @@ AutoML Cheat Sheet
 	c. Choose "View featurization settings" but leave everything as-is
 7. Select validation settings
 	a. Validation type = k-fold cross validation
-		i. Auto -- Let AML choose which validatation metric
+		i. Auto -- Let AML choose which validation metric
 		ii. k-fold cross validation -- Divide data into k subsets, with k-1 used for training and 1 used for validation
 		iii. Monte Carlo cross validation -- Randomly select (without replacement) x% of the data for validation, performing validation n times
 		iv. Train-validation split -- Hold back x% of random data from the training set for validation, performing validation once
-		v. User vlaidation data -- Provide a separate dataset for the express purpose of validation
+		v. User validation data -- Provide a separate dataset for the express purpose of validation
 	b. Test data asset = Test split of 20%
 		i. No test data asset required -- Don't perform testing at all
 		ii. Provide a test data asset -- Provide a separate dataset for the express purpose of testing
